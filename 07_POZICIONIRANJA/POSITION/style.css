@@ -1,0 +1,32 @@
+div {
+    background-color: aquamarine;
+    width: 300px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+#d2 {
+    position: fixed;
+    top: 50px;
+    left: 20px;
+}
+
+#d2 span {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: azure;
+}
+
+#d2 p {
+    margin: 0;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    background-color: blanchedalmond;
+}
+
+div:first-of-type {
+    position: relative;
+    z-index: 1;
+}

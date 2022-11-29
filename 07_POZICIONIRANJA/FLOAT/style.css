@@ -1,0 +1,25 @@
+div {
+    background-color: brown;
+    overflow: hidden;
+}
+
+p {
+    background-color: blanchedalmond;
+    float: right;
+    width: 220px;
+    height: 25px;
+    border: 1px solid black;    
+}
+
+p:nth-child(2) {
+    float: left;
+}
+
+/*
+    FLOAT se koristi kada imamo HTML strukturu
+    roditelj-potomci
+    a potomci se redjaju unutar roditelja
+
+    1) potomci: float: { left, right, none, ... }
+    2) roditelj: overflow: hidden;
+*/
