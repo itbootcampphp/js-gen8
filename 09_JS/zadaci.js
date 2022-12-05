@@ -29,3 +29,40 @@ let m = datum.getMinutes();
 console.log(h + ":" + m);
 let mop = h * 60 + m;
 console.log(mop);
+
+// Zadatak 3
+let ukupnaCenaRobe = 1399;
+let novcanica = 2000;
+let kusur = novcanica - ukupnaCenaRobe;
+console.log(kusur);
+
+// Zadatak 5
+let dan = datum.getDate();
+let mesec = datum.getMonth() + 1;
+let godina = datum.getFullYear();
+console.log(dan + "." + mesec + "." + godina);
+console.log(godina + "/" + mesec + "/" + dan);
+document.getElementById("naslov1").innerHTML = "Bla bla bla " + dan + "." + mesec + "." + godina; 
+
+// Zadatak 6
+// Prva konverzija
+let euro = 150;
+let kurs = 117.2986;
+let dinara = euro * kurs;
+console.log(dinara);
+
+// Druga konverzija
+let novacDinara = 13000;
+let konverzijaEuro = novacDinara / kurs;
+console.log(konverzijaEuro);
+
+// Zadatak 8
+// Prva konverzija
+let c1 = 0;
+let f1 = c1 * 1.8 + 32;
+console.log(f1);
+
+// Druga konverzija
+let f2 = 54;
+let c2 = (f2 - 32) / 1.8;
+console.log(c2);
