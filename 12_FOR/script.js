@@ -61,6 +61,7 @@ while(br_parnih < n) {
     if(i%2 == 0) {
         br_parnih++;
         console.log(`${br_parnih}. od ${n} parnih je broj ${i}`);
+        break
     }
     i++;
 }
@@ -104,6 +105,63 @@ let arsr = zbir / br_brojeva;
 console.log(`Aritmetička sredina je: ${arsr}`);
 // (10+11+12+13+14) / 5 = 60 / 5 = 12
 
-
 // 1045 % 10 = 5
 // 423 % 10 = 3
+
+// 20. 
+let str = `<table border="1">`;
+for(i=1; i<=6; i++){
+    if(i%2 == 0) {
+        str += 
+        `
+            <tr class="roze">
+                <td>Tekst</td> 
+                <td>Tekst</td>
+            </tr>
+        `;
+    }
+    else {
+        str += 
+        `
+            <tr>
+                <td>Tekst</td> 
+                <td>Tekst</td>
+            </tr>
+        `;
+    }
+}
+str += `</table>`;
+// document.body.innerHTML += str;
+document.write(str);
+
+// 21.
+let lista = `<ul>`;
+for(i=1; i<=10; i++) {
+    if(i%3 == 0) {
+        lista += 
+        `
+        <li>
+            <ul>
+                <li>Element ${i}</li>
+            </ul>
+        </li>
+        `;
+    }
+    else {
+        lista += `<li>Element ${i}</li>`;
+    }
+}
+lista += `</ul>`;
+document.write(lista);
+
+/*
+<ul>
+    <li>Element 1</li>
+    <li>Element 2</li>
+    <li>
+        <ul>
+            <li>Element 3</li>
+        </ul>
+    </li>
+</ul> 
+*/
