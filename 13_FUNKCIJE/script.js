@@ -65,3 +65,53 @@ function boji_paragraf(boja) {
 
 boji_paragraf("red");
 boji_paragraf("orange");
+
+////////////////////////////////
+
+// 3. ZADATAK - Napisati funkciju neparan koja za uneti ceo broj n vraća tačno ukoliko je neparan ili netačno ukoliko nije neparan.
+
+////////////////////////////////
+
+function neparan(n) {
+    if(n%2 == 0) {
+        return "Paran broj";
+    } 
+    else {
+        return "Neparan broj";
+    }
+}
+
+let tekst = neparan(11);
+console.log(tekst);
+document.write(tekst);
+
+////////////////////////////////
+
+// 4. ZADATAK - Napisati funkciju maks2 koja vraća veći od dva prosleđena realna broja. Zatim napisati funkciju maks4 koja vraća najveći od četiri prosleđena realna broja
+
+////////////////////////////////
+
+function maks2(br1, br2) {
+    if(br1 > br2) {
+        return br1;
+    }
+    else {
+        return br2;
+    }
+}
+
+let m1 = maks2(13, 6);
+console.log(`Veći je broj ${m1}`);
+
+function maks4(br1, br2, br3, br4) {
+    // let veci1 = maks2(br1, br2);
+    // let veci2 = maks2(br3, br4);
+    // let najveci = maks2(veci1, veci2);
+    // return najveci;
+
+    return maks2(maks2(br1, br2), maks2(br3, br4));
+}
+
+let naj = maks4(15, 2, 14, 3);
+console.log(naj);
+
