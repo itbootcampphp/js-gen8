@@ -74,21 +74,6 @@ let brojevi3 = [5, 1, 2];
 //console.log(proizvodElem(brojevi));
 console.log(proizvodElem(brojevi3));
 
-let najvecibr = niz => {
-    let maks = niz[0];
-    console.log(maks);
-    for (let i = 0; i < niz.length; i++) {
-        console.log(maks);
-        if(maks < niz[i]) {
-            maks = niz[i];
-            console.log(maks);
-        }
-    }
-    console.log(maks);
-    return maks;
-}
-console.log(najvecibr(brojevi));
-console.log(najvecibr(brojevi2));
 
 // Zadatak 4
 let srVrednost = niz => {
