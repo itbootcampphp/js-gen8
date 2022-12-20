@@ -97,7 +97,7 @@ let srVrednost2 = niz => {
 
 // Treca varijanta
 let srVrednost3 = niz => sumaElem(niz) / niz.length;
-console.log(srVrednost3(brojevi3));
+console.log(srVrednost3(brojevi3));  // 1) srVrednost3(brojevi3)  ->  broj, a potom 2) console.log(br)
 
 // Zadatak 4a) Naci srednju vrednost parnih elemenata celobrojnog niza
 let srVrednostParnih = niz => {
