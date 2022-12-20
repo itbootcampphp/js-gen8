@@ -139,3 +139,73 @@ let minNiza = niz => {
     return min;
 }
 console.log(minNiza(br));
+
+// Zadatak 7 - Odrediti indeks maksimalnog elementa celobrojnog niza.
+// Ovakva funkcija vraća indeks poslednjeg maksimuma
+let indMaxNiza = niz => {
+    let max = maxNiza(niz);
+    let indeks = -1;
+    for(let i = 0; i < niz.length; i++) {
+        if(max == niz[i]) {
+            indeks = i;
+        }
+    }
+    return indeks;
+}
+let elementi = [15, 13, 15, 10, 15];
+console.log(indMaxNiza(elementi));
+
+// Ovakva funkcija vraća indeks prvog maksimuma
+let indMaxNiza2 = niz => {
+    let max = maxNiza(niz);
+    let indeks = -1;
+    for(let i = 0; i < niz.length; i++) {
+        if(max == niz[i]) {
+            indeks = i;
+            break
+        }
+    }
+    return indeks;
+}
+console.log(indMaxNiza2(elementi));
+
+// Ovakva funkcija vraća indeks prvog maksimuma
+let indMaxNiza3 = niz => {
+    let max = maxNiza(niz);
+    for(let i = 0; i < niz.length; i++) {
+        if(max == niz[i]) {
+            return i;
+        }
+    } 
+}
+console.log(indMaxNiza3(elementi));
+
+// Zadatak 12 - Odrediti broj parnih elemenata sa neparnim indeksom.
+let paranBrNeparanInd = niz => {
+    let br = 0;
+    for(let i=0; i < niz.length; i++) {
+        if(niz[i] % 2 == 0 && i % 2 != 0) {
+            br++; 
+        }
+    }
+    return br;
+}
+// niz = [10, 12, 11, 13, 14, 16]
+// br = 2
+// i = 5
+let nn = [10, 12, 11, 13, 14, 16];
+console.log(paranBrNeparanInd(nn));
+
+let paranBrNeparanInd1 = niz => {
+    let br = 0;
+    for(let i=1; i < niz.length; i+=2) {
+        if(niz[i] % 2 == 0) {
+            br++; 
+        }
+    }
+    return br;
+}
+console.log(paranBrNeparanInd1(nn));
+
+// 5 -> -5
+// -10 -> 10
