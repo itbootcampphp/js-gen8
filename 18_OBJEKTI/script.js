@@ -54,7 +54,7 @@ let dan = {
     kisa: false,
     sunce: false,
     oblacno: true,
-    temperature: [5, 10, 15],
+    temperature: [-5, -10, -15],
     // 1.
     prosecna: function() {
         let suma = 0;
@@ -73,8 +73,55 @@ let dan = {
             }
         });
         return br;
+    },
+    // 5. 
+    toplo: function() {
+        // if(this.brNatprosecnih() > this.temperature.length/2) {
+        //     return true;
+        // }
+        // else {
+        //     return false;
+        // }
+
+        return this.brNatprosecnih() > this.temperature.length/2;
+    },
+
+    // 6.
+    leden: function() {
+        // 1. način
+        // for(let i=0; i<this.temperature.length; i++) {
+        //     if(this.temperature[i] > 0) {
+        //         return false;
+        //     }
+        // }
+        // return true;
+
+        // 2. način
+        // let leden_dan = true;
+        // this.temperature.forEach(temp => {
+        //     if(temp > 0) {
+        //         leden_dan = false;
+        //     }
+        // });
+        // return leden_dan;
+
+        // 3. način
+        let br_iznad_nule = 0;
+        this.temperature.forEach(temp => {
+            if(temp > 0) {
+                br_iznad_nule++;
+            }
+        });
+        if(br_iznad_nule == 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 };
 console.log(dan.prosecna());
 console.log(dan.brNatprosecnih());
+console.log(dan.toplo());
+console.log(dan.leden());
 
