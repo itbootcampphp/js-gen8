@@ -114,3 +114,36 @@ let printBlogs = username => {
     });
 }
 printBlogs("Stefan");
+
+// Ispisati naslove onih blogova koji imaju natprosečan broj pozitivnih ocena
+let avgLikes = users => {
+    let sum = 0; // Ukupna suma lajkova
+    let br = 0; // Ukupan broj blogova
+    for(let i=0; i<users.length; i++) {
+        let user = users[i]; // Ovo daje objekat user (jedan element iz niza users)
+        let blogs = user.blogs; // Ovo daje niz blogova za "selektovanog" korisnika
+        for(let j=0; j<blogs.length; j++) {
+            let blog = blogs[j]; // Ovo daje objekat blog (jedan element iz niza blogs)
+            sum += blog.likes; // Dodajem lajkove na sumu
+            br++; // Dodajem da sam naišla na još jedan blog
+        }
+    }
+    return sum / br;
+}
+
+let iznadProsekaLajkovi = users => {
+    let prosekLajkova = avgLikes(users);
+    for(let i=0; i<users.length; i++) {
+        let user = users[i]; 
+        let blogs = user.blogs;
+        for(let j=0; j<blogs.length; j++) {
+            let blog = blogs[j];
+            if(blog.likes > prosekLajkova) {
+                console.log(blog.title);
+            }
+        }
+    }
+}
+
+console.log(`Prosečan broj lajkova je ${avgLikes(users)}`);
+iznadProsekaLajkovi(users);
