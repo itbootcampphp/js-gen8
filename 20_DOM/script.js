@@ -48,3 +48,40 @@ console.log(t2); // objekat - PRVI objekat obuhvacen prosledjenim CSS selektorom
 
 let t3 = document.querySelectorAll(".par");
 console.log(t3);
+
+t1.innerHTML += "Novi tekst paragrafa sa id-jem <span class='bold'>p2</span>";
+
+for(let i = 0; i < t3.length; i++) {
+    t3[i].innerHTML = "Promena teskta u elementu sa klasom <span class='bold'>par</span>";
+}
+
+let link = document.querySelector("a");
+link.href = "https://www.google.com";
+link.target = "_blank";
+//link.id = "link";
+
+/*
+link.style.color = "red";
+link.style.border = "1px solid blue";
+link.style.fontSize = "24px";
+*/
+// link.style = "color: red; border: 1px solid blue; font-size: 24px;";
+link.setAttribute("style", "color: red; border: 1px solid blue; font-size: 24px;");
+link.setAttribute("id", "link");
+
+let table = document.querySelector("table");
+console.log(table);
+console.log(table.parentNode);
+console.log(table.childNodes[0]);
+console.log(table.childNodes[1]); // tbody
+console.log(table.childNodes[1].childNodes[0]); // tr
+
+for(let i = 0; i < document.body.childNodes.length; i++) {
+    let element = document.body.childNodes[i];
+    console.log(element);
+}
+
+let naslov = document.createElement('h1');
+naslov.innerHTML = "Naslov kreiran iz JS-a";
+document.body.prepend(naslov);
+naslov.remove();
