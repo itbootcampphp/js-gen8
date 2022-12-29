@@ -57,3 +57,41 @@ btnPlus.addEventListener("click", () => {
     br++;
     spanRez.innerHTML = br;
 });
+
+// 5.
+let inputUnos = document.getElementById("ime");
+let btnPrikazi = document.getElementById("prikazi");
+let spanPrikaz = document.getElementById("prikaz");
+
+btnPrikazi.addEventListener("click", () => {
+    let value = inputUnos.value;
+    spanPrikaz.innerHTML = `Hello ${value}`;
+    // inputUnos.value = "";
+});
+
+btnPrikazi.addEventListener("dblclick", () => {
+    ///// Selektovanje samo jednog radio button koji je čekiran /////
+    let checkedPol = document.querySelector("input[name='pol']:checked"); // Jedan radio button koji je čekiran (vraća HTML tag)
+    console.log(checkedPol);
+    let valueCheckedPol = checkedPol.value; // Daje vrednost (value) iz selektpvanog HTML taga
+    console.log(valueCheckedPol);
+
+    ///// Selektovanje svih radio buttons prema name atributu /////
+    let inputRadios = document.getElementsByName('pol');
+    inputRadios.forEach(input => {
+        if(input.checked) {
+            console.log(input.value);
+        }
+    });
+
+    ///// Isto postižemo i ukoliko koristimo querySelectorAll /////
+    let inputRadiosQuery = document.querySelectorAll('input[name="pol"]');
+    inputRadiosQuery.forEach(input => {
+        if(input.checked) {
+            console.log(input.value);
+        }
+    });
+
+
+});
+
