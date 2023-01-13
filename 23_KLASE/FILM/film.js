@@ -1,8 +1,9 @@
 class Film {
-    constructor(n, r, g) {
+    constructor(n, r, g, o) {
         this.naslov = n;
         this.reziser = r;
         this.godinaIzdanja = g;
+        this.ocene = o;
     }
 
     get naslov() {
@@ -44,8 +45,29 @@ class Film {
         }
     }
 
+    get ocene() {
+        return this._ocene;
+    }
+
+    set ocene(o) {
+        if(Array.isArray(o)) {
+            this._ocene = o;
+        }
+        else {
+            this._ocene = [];
+        }
+    }
+
     stampaj() {
         console.log(`${this.naslov} - ${this.reziser} (${this.godinaIzdanja})`);
+    }
+
+    prosek() {
+        let sumaOcena = 0;
+        this.ocene.forEach(ocena => {
+            sumaOcena += ocena;
+        });
+        return sumaOcena / this.ocene.length;
     }
 }
 
