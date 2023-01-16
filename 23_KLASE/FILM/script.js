@@ -86,3 +86,112 @@ let osrednjiFilm = niz => {
     return minFilm;
 }
 console.log(osrednjiFilm(filmovi));
+
+// Najbolje odcenjeni film
+let najboljeOcenjeni = niz => {
+  let naj = niz[0];
+  niz.forEach((f) => {
+    if (naj.prosek() < f.prosek()) {
+      naj = f;
+    }
+  });
+  return naj;
+};
+console.log(najboljeOcenjeni(filmovi));
+
+// Napraviti funkciju najmanjaOcenaNajboljeg kojoj se prosleđuje niz filmova a ona određuje najbolji film i ispisuje njegovu najslabiju ocenu.
+let najmanjaOcenaNajboljeg = niz => {
+  let najFilm = najboljeOcenjeni(niz);
+  let najslabijaOcena = najFilm.ocene[0];
+  najFilm.ocene.forEach(o => {
+    if(najslabijaOcena > o) {
+      najslabijaOcena = o;
+    }
+  });
+  console.log(najslabijaOcena);
+}
+najmanjaOcenaNajboljeg(filmovi);
+
+// Napisati funkciju najmanjaOcena kojoj se prosleđuje niz filmova, a koja vraća koja je najmanja ocena koju je bilo koji film dobio.
+let najmanjaOcena = niz => {
+  // Ovo možemo da razložimo
+  /*
+    let prviObjekat = niz[0]; // Ovo je objekat
+    let nizOcenaPrvogObjeka = prviObjekat.ocene; // Ovo je niz ocena selektovanog objekta
+    let najmanja = nizOcenaPrvogObjekta[0]; // Ovo je prva ocena iz niza ocena
+  */
+  let najmanja = niz[0].ocene[0];
+  niz.forEach(film => {
+    film.ocene.forEach(o => {
+      if(o < najmanja) {
+        najmanja = o;
+      }
+    });
+  });
+  return najmanja;
+}
+console.log(najmanjaOcena(filmovi));
+
+// Napisati funkciju najcescaOcena kojoj se prosleđuje niz ocena, a ona vraća ocenu koju su filmovi najčešće dobijali. 
+
+let sveOcene = niz => {
+  let arrSveOcene = [];
+  niz.forEach(film => {
+    // arrSveOcene.push(film.ocene); // Daje niz u kome su ocene za sveki od filmova podnizovi
+    arrSveOcene = arrSveOcene.concat(film.ocene); // Nema podnizova, sve je jedan veliki niz
+  });
+  return arrSveOcene;
+}
+console.log(sveOcene(filmovi));
+
+let najcescaOcena = nizOcena => {
+  let pretpostavkaNajucestalijiElem = nizOcena[0];
+  let brPojavljivanjePretpostavke = 1; // Sigurno se jednom pojavila ta ocena
+
+  for(let i=0; i<nizOcena.length; i++) {
+    let tekuci = nizOcena[i]; // zvezdica
+    let tekuciBrPojavljivanja = 0;
+
+    for(let j=0; j<nizOcena.length; j++) {
+      if(tekuci == nizOcena[j]) {
+        tekuciBrPojavljivanja++; // našli smo isti element i treba povećati broj pojavljivanje tekućeg
+      }
+    }
+
+    if(tekuciBrPojavljivanja > brPojavljivanjePretpostavke) {
+      brPojavljivanjePretpostavke = tekuciBrPojavljivanja;
+      pretpostavkaNajucestalijiElem = tekuci;
+    }
+  }
+
+  return pretpostavkaNajucestalijiElem;
+}
+
+let nizSvihOcena = sveOcene(filmovi);
+console.log(najcescaOcena(nizSvihOcena));
+
+// Napraviti funkciju iznadOcene kojoj se prosleđuje ocena i niz filmova, a ona vraća niz onih filmova koji su bolje ocenjeni (veća im je prosečna ocena) od prosleđene ocene.
+let iznadOcene = (ocena, filmovi) => {
+  let nizFilmova = [];
+  filmovi.forEach(film => {
+    if(film.prosek() > ocena) {
+      nizFilmova.push(film);
+    }
+  });
+  return nizFilmova;
+}
+console.log(f1.prosek(), f2.prosek(), f3.prosek());
+console.log(iznadOcene(8.35, filmovi));
+
+// Napisati funkciju iznadOceneNoviji kojoj se prosleđuje ocena i niz filmova  a koja treba da na ekranu da ispiše sve podatke o najnovijem filmu koji zadovoljava prosleđenu ocenu
+let iznadOceneNoviji = (ocena, filmovi) => {
+  let nizFilmova = iznadOcene(ocena, filmovi);
+  let noviji = nizFilmova[0];
+  nizFilmova.forEach(f => {
+    if(f.godinaIzdanja > noviji.godinaIzdanja) {
+      noviji = f;
+    }
+  });
+  console.log(noviji);
+}
+iznadOceneNoviji(8, filmovi);
