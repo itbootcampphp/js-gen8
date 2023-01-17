@@ -38,3 +38,6 @@ li:hover{
 #task{
     margin: 10px;
 }
+.precrtaj{
+    text-decoration: line-through;
+}
