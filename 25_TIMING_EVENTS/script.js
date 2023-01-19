@@ -17,6 +17,7 @@ setInterval(() => {
 let btn1 = document.querySelector("#click1");
 let btn2 = document.querySelector("#click2");
 let btn3 = document.querySelector("#click3");
+let btn4 = document.querySelector("#click4");
 let ispis = document.querySelector("#ispis");
 
 let osoba = {
@@ -54,12 +55,24 @@ btn2.addEventListener("click", function(e) {
     tajmer = null;
 });
 
+let vr = 0;
+let clock = null; 
+
 btn3.addEventListener("click", () => {
-    setInterval(() => {
-        let datum = new Date();
-        let h = datum.getHours();
-        let m = datum.getMinutes();
-        let s = datum.getSeconds();
-        ispis.innerHTML = `${h}:${m}:${s}`;
-    }, 1000);
+    if(clock === null) {
+        clock = setInterval(() => {
+            /*let datum = new Date();
+            let h = datum.getHours();
+            let m = datum.getMinutes();
+            let s = datum.getSeconds();
+            ispis.innerHTML = `${h}:${m}:${s}`;*/
+            vr++;
+            ispis.innerHTML = vr;
+        }, 1000);
+    }
+});
+
+btn4.addEventListener("click", () => {
+    clearInterval(clock);
+    clock = null;
 });
