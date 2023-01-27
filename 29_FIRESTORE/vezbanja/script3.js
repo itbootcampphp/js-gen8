@@ -137,3 +137,36 @@ db.collection('tasks')
 .catch((e) => {
     console.log("Greska: " + e);
 });
+
+// 3
+let datum = new Date();
+let t = firebase.firestore.Timestamp.fromDate(datum);
+db.collection('tasks')
+.where('due_date', '<=', datum)
+.get()
+.then((snapshot) => {
+    snapshot.forEach((doc) => {
+        console.log("Uspesno skinut dokument" + doc.id);
+        console.log(doc.data());
+    });
+})
+.catch((e) => {
+    console.log("Greska: " + e);
+})
+// 4
+/*
+let datum = new Date();
+let t = firebase.firestore.Timestamp.fromDate(datum);
+db.collection('tasks')
+.where('start_date', '>', t)
+.get()
+.then((snapshot) => {
+    snapshot.forEach((doc) => {
+        console.log("Uspesno skinut dokument" + doc.id);
+        console.log(doc.data());
+    });
+})
+.catch((e) => {
+    console.log("Greska: " + e);
+})
+*/
