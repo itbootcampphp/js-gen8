@@ -1,4 +1,4 @@
-class Chatroom{
+export class Chatroom{
 
     // Konstruktor
     constructor(r, u){
@@ -40,22 +40,15 @@ class Chatroom{
         return response; // Vraćamo Promise i od njega možemo potraživati .then i .catch    
     }   
 
+    // Praćenje poruka u bazi i ispis dodatih poruka
+    getChats(callback) {
+        this.chats.onSnapshot(snapshot => {
+           snapshot.docChanges().forEach(change => {
+                if(change.type == "added") {
+                    // console.log(change.doc.data());
+                    callback(change.doc.data());
+                }
+           });
+        });
+    }
 }
-
-let chatroom1 = new Chatroom("#js", "Stefan");
-console.log(chatroom1.username, chatroom1.room); // Testiram getere
-chatroom1.username = "Dušan"; // Testiram seter za username
-console.log(chatroom1.username);
-chatroom1.room = "#general"; // Testiram seter za room
-console.log(chatroom1.room);
-console.log(chatroom1.chats);
-
-let chatroom2 = new Chatroom("#general", "Milena");
-// chatroom2.addChat("Imamo gostovanje")
-//     .then( () => {
-//         console.log("Uspešno dodat čet");
-//     })
-//     .catch( err => {
-//         console.log(err);
-//     });
-
