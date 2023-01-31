@@ -1,32 +1,44 @@
 import {Chatroom} from './chat.js';
 import {ChatUI} from './ui.js';
 
-let chatroom1 = new Chatroom("#js", "Stefan");
-console.log(chatroom1.username, chatroom1.room); // Testiram getere
-chatroom1.username = "Dušan"; // Testiram seter za username
-console.log(chatroom1.username);
-chatroom1.room = "#general"; // Testiram seter za room
-console.log(chatroom1.room);
-console.log(chatroom1.chats);
+let chatroom = new Chatroom("#js", "Stefan");
 
-let chatroom2 = new Chatroom("#general", "Milena");
-// chatroom2.addChat("Imamo gostovanje")
-//     .then( () => {
-//         console.log("Uspešno dodat čet");
-//     })
-//     .catch( err => {
-//         console.log(err);
-//     });
-chatroom2.getChats(data => {
+chatroom.getChats(data => {
     console.log(data);
 });
 
 ///////////////////////////////////////
 
 let ul = document.querySelector('ul');
-let chatUI1 = new ChatUI(ul);
-console.log(chatUI1.list);
+let chatUI = new ChatUI(ul);
 
-chatroom2.getChats(data => {
-    chatUI1.templateLI(data);
+chatroom.getChats(data => {
+    chatUI.templateLI(data);
 });
+
+// DOM
+let formMessage = document.querySelector('#formMessage');
+let inputMessage = document.querySelector('#inputMessage');
+
+//Kada je submit dugme Send pošalji poruku
+formMessage.addEventListener('submit' , e => {
+    e.preventDefault();
+    let message = inputMessage.value;
+    chatroom.addChat(message)
+        .then( () => {
+            console.log("Uspešno dodat čet");
+        })
+        .catch( err => {
+            console.log(err);
+        });
+});
+
+
+
+// chatroom.addChat("Imamo gostovanje")
+//     .then( () => {
+//         console.log("Uspešno dodat čet");
+//     })
+//     .catch( err => {
+//         console.log(err);
+//     });
