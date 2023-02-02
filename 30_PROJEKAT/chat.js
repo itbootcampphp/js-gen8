@@ -5,6 +5,7 @@ export class Chatroom{
         this.room = r;
         this.username = u;
         this.chats = db.collection('chats');
+        this.unsub; // Biće undefined prilikom kreiranja objekta
     }
 
     // Seteri
@@ -21,6 +22,14 @@ export class Chatroom{
     }
     get room(){
         return this._room;
+    }
+
+    // Update sobe
+    updateRoom(ur){
+        this.room = ur; // Pozove seter u promeni sobu
+        if(this.unsub) {
+            this.unsub();
+        }
     }
 
     // Dodavanje nove poruke
@@ -42,7 +51,10 @@ export class Chatroom{
 
     // Praćenje poruka u bazi i ispis dodatih poruka
     getChats(callback) {
-        this.chats.onSnapshot(snapshot => {
+        this.unsub = this.chats
+        .orderBy('created_at')
+        .where('room', '==', this.room)
+        .onSnapshot(snapshot => {
            snapshot.docChanges().forEach(change => {
                 if(change.type == "added") {
                     // console.log(change.doc.data());
